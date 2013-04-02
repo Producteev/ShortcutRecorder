@@ -77,10 +77,7 @@ FOUNDATION_STATIC_INLINE UInt32 SRCocoaToCarbonFlags(NSUInteger aCocoaFlags)
  */
 FOUNDATION_STATIC_INLINE NSString *SRLoc(NSString *aKey)
 {
-    return NSLocalizedStringFromTableInBundle(aKey,
-                                              @"ShortcutRecorder",
-                                              [NSBundle bundleWithIdentifier:@"com.kulakov.ShortcutRecorder"],
-                                              nil);
+    return NSLocalizedStringFromTable(aKey, @"ShortcutRecorder", nil);
 }
 
 
@@ -89,12 +86,8 @@ FOUNDATION_STATIC_INLINE NSString *SRLoc(NSString *aKey)
  */
 FOUNDATION_STATIC_INLINE NSImage *SRImage(NSString *anImageName)
 {
-    NSBundle *b = [NSBundle bundleWithIdentifier:@"com.kulakov.ShortcutRecorder"];
-
-    if (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_6)
-        return [[NSImage alloc] initByReferencingURL:[b URLForImageResource:anImageName]];
-    else
-        return [b imageForResource:anImageName];
+    NSImage *image = [NSImage imageNamed:anImageName];
+    return image;
 }
 
 
