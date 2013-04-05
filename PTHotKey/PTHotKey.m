@@ -130,7 +130,7 @@
 
 - (void)invoke
 {
-	[mTarget performSelector: mAction withObject: self];
+    [[NSApplication sharedApplication] sendAction:mAction to:mTarget from:self];
 }
 
 @end
